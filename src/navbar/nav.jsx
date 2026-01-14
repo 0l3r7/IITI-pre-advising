@@ -28,8 +28,9 @@ function Nav() {
   }, [location.pathname]);
 
   return (
+    <aside>
     <div className="font-RB tracking-wide">
-      <div className="fixed h-full bg-[#1C6100] w-87.5">
+      <div className="fixed h-full bg-[#1C6100] w-[45%]  md:w-87.5">
 
         {/* IITI Logo */}
         <div className="flex justify-center p-5">
@@ -60,7 +61,7 @@ function Nav() {
                   ? "bg-[#A0FBA333] text-white border-2 border-white/30 rounded-lg"
                   : "text-white hover:bg-green-800"
               }`}
-              
+
             >
               <img 
                 src={dashboardLogo} 
@@ -150,6 +151,7 @@ function Nav() {
         </div>
       </div>
     </div>
+    </aside>
   );
 }
 
