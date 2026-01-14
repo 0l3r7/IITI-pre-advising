@@ -1,7 +1,9 @@
 import React from 'react'
 import './dashboard.css'
+import { Link, useLocation } from "react-router-dom";
 import adminLogo from './dashboardLOGO/adminLogo.png'
 import studentLogo from './dashboardLOGO/studentLogo.png'
+import teacherLogo from './dashboardLOGO/teacherLogo.png'
 
 function Dashboard() {
   return (
@@ -14,7 +16,7 @@ function Dashboard() {
                 <h1 className='font-bold text-2xl p-5'>
                     Dashboard
                 </h1>
-                <div className=' flex-col space-x-1 '>
+                <div className=' flex-col space-x-1 cursor-pointer active:scale-95'>
                     <img 
                         src={adminLogo} 
                         alt="admin" 
@@ -29,16 +31,52 @@ function Dashboard() {
             <div className='pt-15 flex flex-col md:flex-row '>
 
                 {/*Students*/}
-                <div className='p-30 md:w-121.75 md:h-41.25 
-                                m-6 bg-[#1C6100] rounded-2xl'>
+                <Link to="/year-level">
+                <div className='p-5 md:w-121.75 md:h-41.25 
+                                m-6 bg-[#1C6100] rounded-2xl
+                                cursor-pointer active:scale-95'>
+
+                    <div className=' flex justify-between '>
+                        <div className='text-white font-RB  ' >
+                            <h1 className='font-bold text-3xl'>100</h1>
+                            <p>Total Students</p>
+                        </div>    
+
+                        <div className='mt-10'>
+                            <img 
+                                src={studentLogo} 
+                                alt="student logo" 
+                                className=''
+                            />
+                        </div>            
+                    </div>
+                    
 
                 </div>
+                </Link>
 
                 {/*Teachers*/}
-                <div className='p-30 md:w-121.75 md:h-41.25   
-                                m-6 bg-[#1C6100] rounded-2xl'>
+                <Link to="/year-level">
+                <div className='p-5 md:w-121.75 md:h-41.25   
+                                m-6 bg-[#1C6100] rounded-2xl
+                                cursor-pointer active:scale-95'>
 
+                    <div className=' flex justify-between '>
+                        <div className='text-white font-RB  ' >
+                            <h1 className='font-bold text-3xl'>30</h1>
+                            <p>Teachers</p>
+                        </div>    
+
+                        <div className='mt-10'>
+                            <img 
+                                src={teacherLogo} 
+                                alt="student logo" 
+                                className=''
+                            />
+                        </div>            
+                    </div>
                 </div>
+                </Link>
  
             </div>
         </div>

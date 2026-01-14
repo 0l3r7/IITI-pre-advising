@@ -14,7 +14,7 @@ function Login() {
             <div>
 
                 {/* IITI Logo */}
-                <div className="flex justify-center p-8">
+                <div className="flex justify-center p-8 ">
                   <img 
                     src={iitiLOGO} 
                     alt="IITI Logo" 
@@ -39,7 +39,8 @@ function Login() {
                                 className='border border-[#0E5A1280] rounded-full
                                            h-10.75 w-72.5 p-4 
                                            focus:outline-none focus:ring-2 focus:ring-green-400
-                                           placeholder:text-xs  text-black/45' 
+                                           placeholder:text-xs  text-black/45
+                                           cursor-pointer active:scale-95' 
                                 placeholder='Admin'/>
 
                         {/*admin password*/}
@@ -47,7 +48,8 @@ function Login() {
                                 className='border border-[#0E5A1280] rounded-full
                                            h-10.75 w-72.5 p-4 
                                            focus:outline-none focus:ring-2 focus:ring-green-400
-                                           placeholder:text-xs text-black/45' 
+                                           placeholder:text-xs text-black/45
+                                           cursor-pointer active:scale-95' 
                                 placeholder='Password'/>
 
                         {/*Login Button */}
@@ -55,7 +57,8 @@ function Login() {
 
                             <button type='submit'
                             className=' bg-[#1C6100] rounded-full
-                                         w-72.5 h-10.75'>
+                                         w-72.5 h-10.75
+                                         cursor-pointer active:scale-95'>
                                 <h1 className='font-bold text-white'>
                                     LOG IN
                                 </h1>

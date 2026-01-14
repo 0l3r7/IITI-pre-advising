@@ -56,7 +56,8 @@ function Nav() {
           {/* Dashboard */}
           <Link to="/dashboard">
             <div
-              className={`flex space-x-2 cursor-pointer px-12 py-2 rounded m-2 transition-colors duration-200 ${
+              className={`flex space-x-2 cursor-pointer px-12 py-2 rounded m-2 
+                          transition-colors duration-200 active:scale-95 ${
                 active === "dashboard"
                   ? "bg-[#A0FBA333] text-white border-2 border-white/30 rounded-lg"
                   : "text-white hover:bg-green-800"
@@ -75,7 +76,8 @@ function Nav() {
           {/* Year Level */}
           <Link to="/year-level">
             <div
-              className={`flex space-x-2 cursor-pointer px-12 py-2 rounded m-2 transition-colors duration-200 ${
+              className={`flex space-x-2 cursor-pointer px-12 py-2 rounded m-2 
+                          transition-colors duration-200 active:scale-95 ${
                 active === "yearlevel"
                   ? "bg-[#A0FBA333] text-white border-2 border-white/30 rounded-lg"
                   : "text-white hover:bg-green-800"
@@ -94,7 +96,8 @@ function Nav() {
           {/* Teacher */}
           <Link to="/teacher">
             <div
-              className={`flex space-x-2 cursor-pointer px-12 py-2 rounded m-2 transition-colors duration-200 ${
+              className={`flex space-x-2 cursor-pointer px-12 py-2 rounded m-2 
+                          transition-colors duration-200 active:scale-95 ${
                 active === "teacher"
                   ? "bg-[#A0FBA333] text-white border-2 border-white/30 rounded-lg"
                   : "text-white hover:bg-green-800"
@@ -113,7 +116,8 @@ function Nav() {
           {/* Schedule */}
           <Link to="/schedule">
             <div
-              className={`flex space-x-2 cursor-pointer px-12 py-2 rounded m-2 transition-colors duration-200 ${
+              className={`flex space-x-2 cursor-pointer px-12 py-2 rounded m-2 
+                          transition-colors duration-200  active:scale-95 ${
                 active === "schedule"
                   ? "bg-[#A0FBA333] text-white border-2 border-white/30 rounded-lg"
                   : "text-white hover:bg-green-800"
@@ -132,7 +136,8 @@ function Nav() {
           {/* Settings */}
           <Link to="/settings">
             <div
-              className={`flex space-x-2 cursor-pointer px-12 py-2 rounded m-2 transition-colors duration-200 ${
+              className={`flex space-x-2 cursor-pointer px-12 py-2 rounded m-2 
+                          transition-colors duration-200 active:scale-95 ${
                 active === "setting"
                   ? "bg-[#A0FBA333] text-white border-2 border-white/30 rounded-lg"
                   : "text-white hover:bg-green-800"
