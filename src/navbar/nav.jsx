@@ -42,7 +42,7 @@ function Nav() {
         </div>
 
         {/* Title */}
-        <div className="bg-[#0E5A12] p-5 shadow-xl">
+        <div className="bg-[#0E5A12] p-5 shadow-xl drop-shadow-sm">
           <h1 className="font-semibold text-white text-lg text-center tracking-wide">
             Institute of Information
             <br />

@@ -6,6 +6,12 @@ import Login from "./login/login.jsx";
 import Nav from './navbar/nav.jsx';
 
 import YearLevel from './yearLevel/yearLevel.jsx';
+import Section from './yearLevel/section/section.jsx';
+import List from './yearLevel/list/list.jsx';
+import ViewGrade from './yearLevel/viewGrade/viewGrade.jsx'
+import SecondSemester from './yearLevel/viewGrade/secondSemester.jsx'
+
+
 import Teacher from './teacher/teacher.jsx';
 import Schedule from './schedule/schedule.jsx';
 import Settings from './settings/settings.jsx';
@@ -72,6 +78,58 @@ function App() {
             <>
               <Nav />
               <Settings />
+            </>
+          }
+        />
+
+        {/* Section */}
+        <Route
+          path="/section"
+          element={
+            <>
+              <Nav />
+              <Section />
+
+            </>
+          }
+        />
+
+        
+        {/* List */}
+        <Route
+          path="/list"
+          element={
+            <>
+              <Nav />
+              <List />
+
+            </>
+          }
+        />
+
+        
+        
+        {/* view grade*/}
+        <Route
+          path="/viewGrade"
+          element={
+            <>
+              <Nav />
+              <ViewGrade />
+
+            </>
+          }
+        />
+
+
+       {/* second semester*/}
+        <Route
+          path="/secondSemester"
+          element={
+            <>
+              <Nav />
+              <SecondSemester />
+
             </>
           }
         />
