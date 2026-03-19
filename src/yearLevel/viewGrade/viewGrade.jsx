@@ -49,6 +49,16 @@ const StudentGrades = () => {
       final: "",
       finalGrade: "",
     },
+       {
+      code: "Subject Code 4",
+      instructor: "Instructor Name",
+      prelim: "",
+      midterm: "",
+      preFinal: "",
+      final: "",
+      finalGrade: "",
+    },    
+     
     {
       code: "Subject Code 5",
       instructor: "Instructor Name",
@@ -94,6 +104,7 @@ const StudentGrades = () => {
       final: "",
       finalGrade: "",
     },
+    
   ];
 
   return (
@@ -113,7 +124,7 @@ const StudentGrades = () => {
       </div>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto p-8 text-sm">
+      <main className="max-w-6xl mx-auto p-8 text-sm ">
         {/* Top Info Row */}
         <div className="flex justify-between items-start mb-8">
           {/* Left Info */}
@@ -140,20 +151,19 @@ const StudentGrades = () => {
         {/* Semester + Student ID */}
         <div className="flex justify-between items-center mb-10">
           {/* Semester Dropdown */}
-          <div className="relative">
-            <label className="absolute -top-2 left-3 bg-[#F5F5F5] px-1 text-[10px] text-gray-500">
-              Select Semester
-            </label>
-            <select
-              value={selectedSemester}
-              onChange={(e) => setSelectedSemester(e.target.value)}
-              className="border border-gray-400 px-4 py-2 pr-8  bg-white text-sm outline-none"
-            >
-              <option>1st Semester 2023 - 2024</option>
-              <option>2nd Semester 2023 - 2024</option>
-              
-            </select>
-          </div>
+        <div className="flex flex-col ">
+          <label className=" bg-[#F5F5F5] px-1 text-[10px] text-gray-500">
+            Select Semester
+          </label>
+          <select
+            value={selectedSemester}
+            onChange={(e) => setSelectedSemester(e.target.value)}
+            className="border border-gray-400 px-4 py-2 pr-8 bg-white text-sm outline-none"
+          >
+            <option>1st Semester 2023 - 2024</option>
+            <option>2nd Semester 2023 - 2024</option>
+          </select>
+        </div>
 
           {/* Student ID */}
           <div className="border border-gray-300 bg-white shadow px-6 py-2 text-sm">
