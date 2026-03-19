@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import { useState } from "react";
+import AddScheduleModal from "./AddScheduleModal";
 import back from "../assets/photo/arrow.png";
 import adminLogo from "../dashboard/dashboardLOGO/adminLogo.png";
 import next from "../assets/photo/next.png";
@@ -22,6 +24,7 @@ const sections = [
 ];
 
 const ViewSection = () => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <div className="bg-gray-100 h-full pl-[55%] md:pl-88 font-RB w-full">
       {/* Header */}
@@ -80,12 +83,18 @@ const ViewSection = () => {
                 <Link to="/viewSchedule">
                   <img src={view} alt="view" />
                 </Link>
-                <img src={add} alt="add" />
+                <img
+                  src={add}
+                  alt="add"
+                  className="cursor-pointer"
+                  onClick={() => setShowModal(true)}
+                />
               </div>
             </div>
           ))}
         </div>
       </div>
+      <AddScheduleModal show={showModal} onClose={() => setShowModal(false)} />
     </div>
   );
 };
