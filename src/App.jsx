@@ -1,20 +1,21 @@
-import './App.css';
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 import Login from "./login/login.jsx";
-import Nav from './navbar/nav.jsx';
+import Nav from "./navbar/nav.jsx";
 
-import YearLevel from './yearLevel/yearLevel.jsx';
-import Section from './yearLevel/section/section.jsx';
-import List from './yearLevel/list/list.jsx';
-import ViewGrade from './yearLevel/viewGrade/viewGrade.jsx'
-import SecondSemester from './yearLevel/viewGrade/secondSemester.jsx'
+import YearLevel from "./yearLevel/yearLevel.jsx";
+import Section from "./yearLevel/section/section.jsx";
+import List from "./yearLevel/list/list.jsx";
+import ViewGrade from "./yearLevel/viewGrade/viewGrade.jsx";
+import SecondSemester from "./yearLevel/viewGrade/secondSemester.jsx";
 
-
-import Teacher from './teacher/teacher.jsx';
-import Schedule from './schedule/schedule.jsx';
-import Settings from './settings/settings.jsx';
+import Teacher from "./teacher/teacher.jsx";
+import Schedule from "./schedule/schedule.jsx";
+import ViewSection from "./schedule/viewSection.jsx";
+import ViewSchedule from "./schedule/viewSchedule.jsx";
+import Settings from "./settings/settings.jsx";
 
 // Lazy loaded dashboard (CSS loads only when needed)
 const Dashboard = lazy(() => import("./dashboard/dashboard.jsx"));
@@ -23,7 +24,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
         {/* Login page (NO navbar) */}
         <Route path="/" element={<Login />} />
 
@@ -89,12 +89,10 @@ function App() {
             <>
               <Nav />
               <Section />
-
             </>
           }
         />
 
-        
         {/* List */}
         <Route
           path="/list"
@@ -102,13 +100,10 @@ function App() {
             <>
               <Nav />
               <List />
-
             </>
           }
         />
 
-        
-        
         {/* view grade*/}
         <Route
           path="/viewGrade"
@@ -116,24 +111,42 @@ function App() {
             <>
               <Nav />
               <ViewGrade />
-
             </>
           }
         />
 
-
-       {/* second semester*/}
+        {/* second semester*/}
         <Route
           path="/secondSemester"
           element={
             <>
               <Nav />
               <SecondSemester />
-
             </>
           }
         />
 
+        {/* view section*/}
+        <Route
+          path="/viewSection"
+          element={
+            <>
+              <Nav />
+              <ViewSection />
+            </>
+          }
+        />
+
+        {/* view schedule*/}
+        <Route
+          path="/viewSchedule"
+          element={
+            <>
+              <Nav />
+              <ViewSchedule />
+            </>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
