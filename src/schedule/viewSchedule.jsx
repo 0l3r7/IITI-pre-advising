@@ -1,50 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import React from "react";
-import back from "../assets/photo/arrow.png";
-import adminLogo from "../dashboard/dashboardLOGO/adminLogo.png";
+import Close from "../assets/photo/Close.png";
+import ConfirmModal from "./ConfirmModal";
 
-const ViewSchedule = () => {
-  // useState for student info
-  const [yearSection, setYearSection] = useState("BSIT 2A");
-  const [semester, setSemester] = useState("1st");
+const ViewSchedule = ({ show, onClose, yearSection }) => {
+  if (!show) return null;
 
-  const schedules = {
-    "1st": [
-      {
-        code: "GEC-TM",
-        unit: 3,
-        hours: 3,
-        time: "9:00 - 11:00 AM",
-        day: "Monday",
-        room: "COM LAB 1",
-        section: "2-A",
-        instructor: "John Doe",
-      },
-      {
-        code: "WS101",
-        unit: 3,
-        hours: 3,
-        time: "1:00 - 3:00 PM",
-        day: "Tuesday",
-        room: "COM LAB 2",
-        section: "2-A",
-        instructor: "Jane Smith",
-      },
-    ],
-    "2nd": [
-      {
-        code: "SA101",
-        unit: 3,
-        hours: 3,
-        time: "10:00 - 12:00 PM",
-        day: "Wednesday",
-        room: "COM LAB 3",
-        section: "2-A",
-        instructor: "Mark Lee",
-      },
-    ],
-  };
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [selectedSemester, setSelectedSemester] = useState(
+    "2nd Semester 2025-2026",
+  );
 
   const scheduleColumns = [
     "code",
@@ -57,88 +21,131 @@ const ViewSchedule = () => {
     "instructor",
   ];
 
+  const emptyRow = {
+    code: "",
+    unit: "",
+    hours: "",
+    time: "",
+    day: "",
+    room: "",
+    section: "",
+    instructor: "",
+  };
+
+  // Separate state for each semester
+  const [firstSemesterRows, setFirstSemesterRows] = useState(
+    Array(10)
+      .fill(null)
+      .map(() => ({ ...emptyRow })),
+  );
+  const [secondSemesterRows, setSecondSemesterRows] = useState(
+    Array(10)
+      .fill(null)
+      .map(() => ({ ...emptyRow })),
+  );
+
+  // Decide which rows to display
+  const rows =
+    selectedSemester === "1st Semester 2025-2026"
+      ? firstSemesterRows
+      : secondSemesterRows;
+  const setRows =
+    selectedSemester === "1st Semester 2025-2026"
+      ? setFirstSemesterRows
+      : setSecondSemesterRows;
+
+  const handleChange = (index, field, value) => {
+    const updated = [...rows];
+    updated[index][field] = value;
+    setRows(updated);
+  };
+
   return (
-    <div className="h-full pl-[55%] md:pl-88 font-RB w-full bg-[#F5F5F5] min-h-screen">
-      {/* Header */}
-      <div className="p-5 bg-gray-100 pb-12 pt-7 flex justify-between border-b-5 border-[#D9D9D9] sticky top-0">
-        <div className="flex-col cursor-pointer active:scale-95">
-          <Link to="/viewSection">
-            <img src={back} alt="Back" className="w-4 h-4" />
-          </Link>
-        </div>
-
-        <Link to="/profile">
-          <div className="flex-col cursor-pointer active:scale-95">
-            <img src={adminLogo} alt="admin" className="h-10.5 w-10.5" />
-            <h1 className="text-xs text-center">Admin</h1>
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 font-RB">
+      <div className="bg-white w-[80vw] h-[85vh] rounded-lg shadow-lg p-10 relative overflow-auto">
+        {/* Top */}
+        <div className="flex justify-between items-center mb-4">
+          <div>
+            <h1 className="text-xl">Class Schedule</h1>
+            <h2>{yearSection}</h2>
           </div>
-        </Link>
-      </div>
 
-      {/* Main Content */}
-      <main className="pl-8 pr-10">
-        <div className="text-xl pt-8 mb-6">
-          <h1>Class Schedule</h1>
-          <h1>{yearSection}</h1>
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 cursor-pointer"
+          >
+            <img src={Close} alt="Close" />
+          </button>
         </div>
 
-        {/* Semester Dropdown */}
-        <div className="relative inline-block border border-gray-400 rounded px-3 pt-3 pb-2 mb-12">
+        {/* Semester Selector */}
+        <div className="relative inline-block border border-gray-400 rounded px-3 pt-3 pb-2 mb-4">
           <span className="absolute -top-2.5 left-3 bg-white px-1 text-xs text-gray-500">
             Select Semester
           </span>
+
           <select
-            value={semester}
-            onChange={(e) => setSemester(e.target.value)}
             className="bg-white text-base focus:outline-none pr-1"
+            value={selectedSemester}
+            onChange={(e) => setSelectedSemester(e.target.value)}
           >
-            <option value="1st">2nd Semester 2025 - 2026</option>
-            <option value="2nd">1st Semester 2025 - 2026</option>
+            <option>1st Semester 2025-2026</option>
+            <option>2nd Semester 2025-2026</option>
           </select>
         </div>
 
-        {/* table */}
-        <table className="w-full table-fixed">
+        {/* Table */}
+        <table className="w-full table-fixed border">
           <thead>
             <tr className="text-sm">
-              <th className="border p-2 wrap-break-words">SUBJECT CODE</th>
-              <th className="border p-2 wrap-break-words">UNIT</th>
-              <th className="border p-2 wrap-break-words">HOURS</th>
-              <th className="border p-2 wrap-break-words">TIME</th>
-              <th className="border p-2 wrap-break-words">DAYS</th>
-              <th className="border p-2 wrap-break-words">ROOM</th>
-              <th className="border p-2 wrap-break-words">SECTION</th>
-              <th className="border p-2 wrap-break-words">
-                INSTRUCTOR'S NAME/SIGNATURE
-              </th>
+              <th className="border p-2">SUBJECT CODE</th>
+              <th className="border p-2">UNIT</th>
+              <th className="border p-2">HOURS</th>
+              <th className="border p-2">TIME</th>
+              <th className="border p-2">DAYS</th>
+              <th className="border p-2">ROOM</th>
+              <th className="border p-2">SECTION</th>
+              <th className="border p-2">INSTRUCTOR'S NAME/SIGNATURE</th>
             </tr>
           </thead>
+
           <tbody>
-            {schedules[semester].map((row, index) => (
+            {rows.map((row, index) => (
               <tr key={index}>
                 {scheduleColumns.map((col) => (
-                  <td key={col} className="border px-2 py-1 text-center">
-                    {row[col]}
+                  <td key={col} className="border p-1.5">
+                    <input
+                      type="text"
+                      value={row[col]}
+                      onChange={(e) => handleChange(index, col, e.target.value)}
+                      className="w-full text-center outline-none py-1"
+                    />
                   </td>
                 ))}
               </tr>
             ))}
-
-            {/* Fill remaining empty rows */}
-            {Array(10 - schedules[semester].length)
-              .fill(null)
-              .map((_, i) => (
-                <tr key={`empty-${i}`}>
-                  {Array(8)
-                    .fill(null)
-                    .map((_, j) => (
-                      <td key={j} className="border px-3 py-5" />
-                    ))}
-                </tr>
-              ))}
           </tbody>
         </table>
-      </main>
+
+        <button
+          className="mt-4 bg-green-600 text-white px-4 py-2 rounded cursor-pointer"
+          onClick={() => setShowConfirm(true)}
+        >
+          Clear Schedule
+        </button>
+      </div>
+      <ConfirmModal
+        show={showConfirm}
+        onCancel={() => setShowConfirm(false)}
+        onConfirm={() => {
+          setRows(
+            Array(10)
+              .fill(null)
+              .map(() => ({ ...emptyRow })),
+          );
+          setShowConfirm(false);
+        }}
+      />
     </div>
   );
 };
