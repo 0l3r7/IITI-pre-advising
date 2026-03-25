@@ -26,10 +26,31 @@ const ViewSchedule = () => {
         unit: 3,
         hours: 3,
         time: "1:00 - 3:00 PM",
-        day: "Tuesday",
-        room: "COM LAB 2",
+        day: "Wednesday",
+        room: "202",
         section: "2-A",
         instructor: "Jane Smith",
+      },
+
+      {
+        code: "CC101",
+        unit: 3,
+        hours: 5,
+        time: "5:00 - 8:00 PM",
+        day: "Tuesday",
+        room: "COM LAB 3",
+        section: "2-A",
+        instructor: "Engr. Jocelyn C. Enrile",
+      },
+      {
+        code: "CC102",
+        unit: 3,
+        hours: 5,
+        time: "5:00 - 7:00 PM",
+        day: "Friday",
+        room: "COM LAB 2",
+        section: "2-A",
+        instructor: "Ma. Theresa Z. Carpio",
       },
     ],
     "2nd": [
@@ -92,8 +113,8 @@ const ViewSchedule = () => {
             onChange={(e) => setSemester(e.target.value)}
             className="bg-white text-base focus:outline-none pr-1"
           >
-            <option value="1st">2nd Semester 2025 - 2026</option>
-            <option value="2nd">1st Semester 2025 - 2026</option>
+            <option value="1st">1st Semester 2025 - 2026</option>
+            <option value="2nd">2nd Semester 2025 - 2026</option>
           </select>
         </div>
 
