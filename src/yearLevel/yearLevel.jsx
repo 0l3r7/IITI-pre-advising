@@ -23,14 +23,12 @@ import adminLogo from '../dashboard/dashboardLOGO/adminLogo.png'
                 <h1 className='font-bold text-2xl p-5'>
                     Year Level
                 </h1>
-                <div className=' flex-col  cursor-pointer active:scale-95'>
-                    <img 
-                        src={adminLogo} 
-                        alt="admin" 
-                        className=' h-10.5 w-10.5 '
-                    />
-                    <h1 className='text-xs text-center '>Admin</h1>
-                </div>
+                <Link to="/profile">
+                  <div className="flex-col cursor-pointer active:scale-95">
+                    <img src={adminLogo} alt="admin" className="h-10.5 w-10.5" />
+                    <h1 className="text-xs text-center">Admin</h1>
+                  </div>
+                </Link>
                 
             </div>
 

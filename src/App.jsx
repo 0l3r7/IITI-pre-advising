@@ -17,6 +17,8 @@ import ViewSection from "./schedule/viewSection.jsx";
 import ViewSchedule from "./schedule/viewSchedule.jsx";
 import Settings from "./settings/settings.jsx";
 
+import Profile from "./settings/profile.jsx";
+
 // Lazy loaded dashboard (CSS loads only when needed)
 const Dashboard = lazy(() => import("./dashboard/dashboard.jsx"));
 
@@ -78,6 +80,17 @@ function App() {
             <>
               <Nav />
               <Settings />
+            </>
+          }
+        />
+
+        {/* Profile */}
+        <Route
+          path="/profile"
+          element={
+            <>
+              <Nav />
+              <Profile />
             </>
           }
         />
@@ -148,6 +161,8 @@ function App() {
           }
         />
       </Routes>
+
+      
     </BrowserRouter>
   );
 }

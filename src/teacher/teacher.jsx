@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import adminLogo from "../../src/dashboard/dashboardLOGO/adminLogo.png";
 const Card = ({ subject, teacher }) => {
   return (
@@ -42,10 +43,12 @@ const Teachers = () => {
       <div className="bg-white shadow px-6 py-4 flex items-center justify-between border-b-[5px] border-[#D9D9D9]">
         <span className="text-[25px] font-bold text-black">Teachers</span>
 
-<div className="flex-col cursor-pointer active:scale-95">
-          <img src={adminLogo} alt="admin" className="h-10.5 w-10.5" />
-          <h1 className="text-xs text-center">Admin</h1>
-        </div>
+        <Link to="/profile">
+          <div className="flex-col cursor-pointer active:scale-95">
+            <img src={adminLogo} alt="admin" className="h-10.5 w-10.5" />
+            <h1 className="text-xs text-center">Admin</h1>
+          </div>
+        </Link>
       </div>
 
       {/* GRID */}
