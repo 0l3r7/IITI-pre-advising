@@ -28,6 +28,7 @@ function App() {
       <Routes>
         {/* Login page (NO navbar) */}
         <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
 
         {/* Dashboard */}
         <Route

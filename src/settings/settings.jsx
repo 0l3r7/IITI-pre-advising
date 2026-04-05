@@ -1,11 +1,16 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import adminLogo from "../../src/dashboard/dashboardLOGO/adminLogo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import ExitModal from "./ExitModal";
 
 export default function EditProfile() {
-  const [activeTab, setActiveTab] = useState("Account Details");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const tabs = ["Account Details", "Get Help", "Notifications", "Privacy"];
+  const handleLogout = () => {
+    // Perform logout logic here
+    navigate("/login"); // redirect to login page
+  };
 
   return (
     <div className="h-full pl-[55%] md:pl-88 font-RB w-full bg-[#F5F5F5] min-h-screen">
@@ -22,23 +27,8 @@ export default function EditProfile() {
         </Link>
       </div>
 
-      {/* TABS */}
       <div className="px-10 mt-6">
-        <div className="bg-white border border-gray-300 rounded-xl flex justify-between px-6 py-3 text-sm">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={()=> setActiveTab(tab)}
-              className={`tab px-3 py-1 rounded-lg font-medium ${
-                activeTab === tab
-                  ? "bg-[#A0FBA3] text-black"
-                  : "text-gray-600"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
+        <h2 className="text-[20px] font-normal text-black">Account Details</h2>
       </div>
 
       {/* PROFILE CONTENT */}
@@ -69,7 +59,7 @@ export default function EditProfile() {
           ].map((field) => (
             <div key={field.label}>
               <label className="text-[12px] text-gray-500">{field.label}</label>
-              <div className="mt-2 w-[508px] h-[58px] bg-white border border-gray-300 rounded-[20px] flex items-center px-5">
+              <div className="mt-2 w-127 h-14.5 bg-white border border-gray-300 rounded-[20px] flex items-center px-5">
                 <input
                   type="text"
                   value={field.value}
@@ -83,11 +73,21 @@ export default function EditProfile() {
 
         {/* LOGOUT BUTTON */}
         <div className="mt-10">
-          <button className="bg-red-500 text-white text-sm px-5 py-2 rounded-full hover:bg-red-600 transition-colors">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-red-500 text-white text-sm px-5 py-2 rounded-full hover:bg-red-600 transition-colors"
+          >
             Logout
           </button>
         </div>
       </div>
+
+      {/* EXIT MODAL */}
+      <ExitModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleLogout}
+      />
     </div>
   );
 }

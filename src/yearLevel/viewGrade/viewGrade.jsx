@@ -139,15 +139,6 @@ const StudentGrades = () => {
             </h1>
           </div>
 
-          {/* Year Tabs */}
-          <div className="flex gap-8 text-sm">
-            <button className="border border-gray-400 px-4 py-1 rounded bg-gray-100">
-              1st year
-            </button>
-            <button>2nd year</button>
-            <button>3rd year</button>
-            <button>4th year</button>
-          </div>
         </div>
 
         {/* Semester + Student ID */}
@@ -184,7 +175,7 @@ const StudentGrades = () => {
         </div>
 
         {/* Subject Rows */}
-        <div className="space-y-0">
+        <div className="space-y-2">
           {subjects.map((subject, index) => (
             <div
               key={index}

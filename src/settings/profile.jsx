@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import adminLogo from "../../src/dashboard/dashboardLOGO/adminLogo.png";
 
 const EditProfile = () => {
   // State for each input field
@@ -27,13 +25,6 @@ const EditProfile = () => {
       {/* HEADER */}
       <div className="bg-white shadow px-6 py-4 flex items-center justify-between border-b-[5px] border-[#D9D9D9]">
         <span className="text-[25px] font-bold text-black">Profile</span>
-
-        <Link to="/profile">
-          <div className="flex-col cursor-pointer active:scale-95">
-            <img src={adminLogo} alt="admin" className="h-10.5 w-10.5" />
-            <h1 className="text-xs text-center">Admin</h1>
-          </div>
-        </Link>
       </div>
 
       {/* PROFILE CONTENT */}
@@ -110,7 +101,7 @@ const EditProfile = () => {
 const EditableField = ({ label, value, setValue, editable, toggleEdit }) => (
   <div>
     <label className="text-[12px] text-gray-500">{label}</label>
-    <div className="mt-2 w-[508px] h-[58px] bg-white border border-gray-300 rounded-[20px] flex items-center justify-between px-5">
+    <div className="mt-2 w-127 h-14.5 bg-white border border-gray-300 rounded-[20px] flex items-center justify-between px-5">
       <input
         type="text"
         value={value}
