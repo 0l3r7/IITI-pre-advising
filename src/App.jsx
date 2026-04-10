@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 import Login from "./login/login.jsx";
@@ -9,9 +9,9 @@ import YearLevel from "./yearLevel/yearLevel.jsx";
 import Section from "./yearLevel/section/section.jsx";
 import List from "./yearLevel/list/list.jsx";
 import ViewGrade from "./yearLevel/viewGrade/viewGrade.jsx";
-import SecondSemester from "./yearLevel/viewGrade/secondSemester.jsx";
 
-import Teacher from "./teacher/teacher.jsx";
+
+import Teacher from "./pre-advising/pre-Advising.jsx";
 import Schedule from "./schedule/schedule.jsx";
 import ViewSection from "./schedule/viewSection.jsx";
 import ViewSchedule from "./schedule/viewSchedule.jsx";
@@ -26,8 +26,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Login page (NO navbar) */}
-        <Route path="/" element={<Login />} />
+        {/* Redirect root path to login */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
 
         {/* Dashboard */}
@@ -52,9 +52,9 @@ function App() {
           }
         />
 
-        {/* Teacher */}
+        {/* Pre-Advising */}
         <Route
-          path="/teacher"
+          path="/pre-advising"
           element={
             <>
               <Nav />
@@ -129,16 +129,6 @@ function App() {
           }
         />
 
-        {/* second semester*/}
-        <Route
-          path="/secondSemester"
-          element={
-            <>
-              <Nav />
-              <SecondSemester />
-            </>
-          }
-        />
 
         {/* view section*/}
         <Route

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import back from "../../assets/photo/arrow.png";
 import adminLogo from "../../dashboard/dashboardLOGO/adminLogo.png";
-import SecondSemester from "./secondSemester";
+
 
 const StudentGrades = () => {
   // useState for student info

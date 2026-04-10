@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import iitiLOGO from "./navbarLOGO/iitiLogo.png";
 import dashboardLogo from "./navbarLOGO/dashboardLogo.png";
 import yearLevelLogo from "./navbarLOGO/yearLevelLogo.png";
-import teacherLogo from "./navbarLOGO/teacherLogo.png";
+import preAdvisingLogo from "../assets/photo/preAdvisingLogo.png";
 import scheduleLogo from "./navbarLOGO/scheduleLogo.png";
 import settingLogo from "./navbarLOGO/settingLogo.png";
 
@@ -15,7 +15,7 @@ function Nav() {
   const pathToKey = {
     "/dashboard": "dashboard",
     "/year-level": "yearlevel",
-    "/teacher": "teacher",
+    "/pre-advising": "pre-advising",
     "/schedule": "schedule",
     "/settings": "setting"
   };
@@ -93,22 +93,22 @@ function Nav() {
             </div>
           </Link>
 
-          {/* Teacher */}
-          <Link to="/teacher">
+          {/* pre advising */}
+          <Link to="/pre-advising">
             <div
               className={`flex space-x-2 cursor-pointer px-12 py-2 rounded m-2 
                           transition-colors duration-200 active:scale-95 ${
-                active === "teacher"
+                active === "pre-advising"
                   ? "bg-[#A0FBA333] text-white border-2 border-white/30 rounded-lg"
                   : "text-white hover:bg-green-800"
               }`}
 
             >
               <img 
-                src={teacherLogo} 
-                alt="Teacher" 
+                src={preAdvisingLogo} 
+                alt="Pre Advising" 
                 className="w-5.25 h-5.25" />
-              <h1>Teacher</h1>
+              <h1>Pre-Advising</h1>
 
             </div>
           </Link>

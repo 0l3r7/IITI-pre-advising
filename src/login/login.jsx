@@ -1,8 +1,16 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import iitiLOGO from '../navbar/navbarLOGO/iitiLogo.png'   
 
 function Login() {
+  const navigate = useNavigate()
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    navigate('/dashboard')
+  }
+
   return (
     <div className='flex justify-center items-center h-screen font-RB bg-[#3B8126]'>
         
@@ -32,7 +40,7 @@ function Login() {
 
                 {/*Log In Form*/}
                 <div>
-                    <form action="/dashboard" method="GET"
+                    <form onSubmit={handleSubmit}
                         className='flex flex-col justify-center items-center space-y-5 pt-15'>
                         {/*admin username*/}
                         <input  type="text" id="admin" required
