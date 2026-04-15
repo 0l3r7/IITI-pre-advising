@@ -56,7 +56,7 @@ export default function AddScheduleModal({ show, onClose }) {
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 font-RB">
       {/* Modal */}
-      <div className="bg-white w-[700px] rounded-lg shadow-lg p-6">
+      <div className="bg-white w-175 rounded-lg shadow-lg p-6">
         {/* Top line */}
         <div className="border-b border-black/20 mb-6"></div>
 

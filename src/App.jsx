@@ -11,7 +11,7 @@ import List from "./yearLevel/list/list.jsx";
 import ViewGrade from "./yearLevel/viewGrade/viewGrade.jsx";
 
 
-import Teacher from "./pre-advising/pre-Advising.jsx";
+import PreAdvising from "./pre-advising/pre-Advising.jsx";
 import Schedule from "./schedule/schedule.jsx";
 import ViewSection from "./schedule/viewSection.jsx";
 import ViewSchedule from "./schedule/viewSchedule.jsx";
@@ -58,7 +58,7 @@ function App() {
           element={
             <>
               <Nav />
-              <Teacher />
+              <PreAdvising />
             </>
           }
         />

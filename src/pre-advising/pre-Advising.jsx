@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // adjust paths based on your project structure
-import adminLogo from "../assets/adminLogo.png";
-import book from "../assets/book.png";
+import adminLogo from "../dashboard/dashboardLOGO/adminLogo.png";
+import book from "../assets/photo/BOOK.png";
 
 const PreAdvising = () => {
   const years = [
@@ -14,7 +14,7 @@ const PreAdvising = () => {
   ];
 
   return (
-    <div className="bg-gray-100 font-sans min-h-screen w-full md:pl-8855%]">
+    <div className="bg-gray-100 font-sans min-h-screen w-full md:pl-88 pl-[55%]">
 
       {/* HEADER */}
       <div className="p-5 pt-14 flex justify-between border-b-4 border-[#D9D9D9] bg-white">
@@ -38,7 +38,7 @@ const PreAdvising = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 max-w-255 mx-auto">
 
           {years.map((item, index) => (
-            <Link to="/section" key={index}>
+            <Link to="/pre-Advising list" key={index}>
               <div
                 className="bg-[#1C6100] w-full h-41.25 rounded-[15px] p-5 relative text-white shadow-lg hover:bg-green-800 transition-all duration-300 cursor-pointer"
               >
