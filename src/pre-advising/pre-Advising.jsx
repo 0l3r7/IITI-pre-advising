@@ -38,7 +38,8 @@ const PreAdvising = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 max-w-255 mx-auto">
 
           {years.map((item, index) => (
-            <Link to="/pre-Advising list" key={index}>
+            /* Updated link to match the route in App.jsx */
+            <Link to="/pre-advising-list" key={index}>
               <div
                 className="bg-[#1C6100] w-full h-41.25 rounded-[15px] p-5 relative text-white shadow-lg hover:bg-green-800 transition-all duration-300 cursor-pointer"
               >

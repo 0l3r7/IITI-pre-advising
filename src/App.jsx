@@ -10,8 +10,10 @@ import Section from "./yearLevel/section/section.jsx";
 import List from "./yearLevel/list/list.jsx";
 import ViewGrade from "./yearLevel/viewGrade/viewGrade.jsx";
 
-
 import PreAdvising from "./pre-advising/pre-Advising.jsx";
+// Import the new file (React handles the space in the string)
+import PreAdvisingList from "./pre-advising/pre-Advising list.jsx";
+
 import Schedule from "./schedule/schedule.jsx";
 import ViewSection from "./schedule/viewSection.jsx";
 import ViewSchedule from "./schedule/viewSchedule.jsx";
@@ -19,14 +21,13 @@ import Settings from "./settings/settings.jsx";
 
 import Profile from "./settings/profile.jsx";
 
-// Lazy loaded dashboard (CSS loads only when needed)
+// Lazy loaded dashboard
 const Dashboard = lazy(() => import("./dashboard/dashboard.jsx"));
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Redirect root path to login */}
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
 
@@ -59,6 +60,17 @@ function App() {
             <>
               <Nav />
               <PreAdvising />
+            </>
+          }
+        />
+
+        {/* ADDED: Pre-Advising List Route */}
+        <Route
+          path="/pre-advising-list"
+          element={
+            <>
+              <Nav />
+              <PreAdvisingList />
             </>
           }
         />
@@ -129,7 +141,6 @@ function App() {
           }
         />
 
-
         {/* view section*/}
         <Route
           path="/viewSection"
@@ -152,8 +163,6 @@ function App() {
           }
         />
       </Routes>
-
-      
     </BrowserRouter>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import arrow from "../assets/photo/arrow.png";
+import next from "../assets/photo/next.png"; // Assuming you have this icon
 import adminLogo from "../dashboard/dashboardLOGO/adminLogo.png";
 
 const StudentList = () => {
@@ -28,7 +29,7 @@ const StudentList = () => {
     },
   ];
 
-  // FILTER SEARCH
+  // FILTER SEARCH logic
   const filteredStudents = students.filter((student) =>
     student.name.toLowerCase().includes(search.toLowerCase()) ||
     student.email.toLowerCase().includes(search.toLowerCase()) ||
@@ -36,69 +37,47 @@ const StudentList = () => {
   );
 
   return (
-    <div className="w-full min-h-screen bg-gray-100 font-sans md:pl-88 pl-[55%]">
-
-      {/* HEADER */}
-      <div className="p-5 pt-14 flex justify-between items-center border-b-[5px] border-[#D9D9D9]">
-
-        {/* LEFT SIDE */}
-        <div className="flex flex-col items-start gap-2">
+    <div className="bg-gray-100 h-full pl-[55%] md:pl-88 font-sans w-full min-h-screen">
+      
+      {/* Header - Matching your reference design */}
+      <div className="p-5 pt-14 flex justify-between border-b-5 border-[#D9D9D9] items-center">
+        
+        <div className="flex flex-col items-start gap-1 text-[25px]">
           <Link to="/pre-advising">
-            <img src={arrow} alt="back" className="w-4 h-4" />
+            <img src={arrow} alt="Back" className="w-4 h-4" />
           </Link>
-
-          <span className="font-bold text-black text-[28px]">
-            BSIT First Year Students
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="font-bold text-black/50">BSIT 1st Year</span>
+            <img src={next} alt="Next" className="w-3 h-3 opacity-50" />
+            <span className="font-bold text-black/50">Sections</span>
+            <img src={next} alt="Next" className="w-3 h-3" />
+            <span className="font-bold text-black">1A</span>
+          </div>
         </div>
 
-        {/* RIGHT SIDE */}
         <div className="flex items-center gap-4">
-
-          {/* SEARCH BAR */}
-          <div className="flex items-center bg-[#E5E5E5] rounded-full px-4 py-2 w-65">
-            
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5 text-gray-500 mr-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
-              />
-            </svg>
-
-            <div className="w-px h-5 bg-gray-400 mr-2"></div>
-
+           {/* Search Bar remains for functionality */}
+           <div className="flex items-center bg-[#E5E5E5] rounded-full px-4 py-1.5 w-60">
             <input
               type="text"
               placeholder="Search Student"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="bg-transparent outline-none text-sm w-full placeholder-gray-500"
+              className="bg-transparent outline-none text-xs w-full placeholder-gray-500"
             />
           </div>
 
-          {/* ADMIN PROFILE */}
           <Link to="/profile">
             <div className="flex-col cursor-pointer active:scale-95 text-center">
-              <img src={adminLogo} className="h-10 w-10 mx-auto" alt="admin" />
+              <img src={adminLogo} alt="admin" className="h-10 w-10 mx-auto" />
               <h1 className="text-xs">Admin</h1>
             </div>
           </Link>
-
         </div>
       </div>
 
-      {/* MAIN */}
       <main className="px-8 py-6">
-
-        {/* TABLE HEADER */}
+        {/* Table Header */}
         <div className="flex px-4 mb-2 text-gray-700 font-semibold text-[16px]">
           <div className="w-1/4">Student Name</div>
           <div className="w-1/6 text-center">Section</div>
@@ -106,33 +85,32 @@ const StudentList = () => {
           <div className="w-1/4 text-center">Student Number</div>
         </div>
 
-        {/* TABLE BODY */}
+        {/* Student List Container */}
         <div className="shadow-sm">
           <div className="overflow-y-auto">
-            <div className="px-4 space-y-1">
-
-              {/* STUDENT ROWS */}
+            <div className="px-4 flex flex-col space-y-1">
+              
+              {/* Dynamic Student Rows */}
               {filteredStudents.length > 0 ? (
                 filteredStudents.map((student, index) => (
-                  <Link to="/viewGrade" key={index}>
-                    <div className="flex border bg-[#D9D9D9]/50 border-black hover:bg-gray-200 cursor-pointer h-6 items-center px-2 text-sm">
+                  /* Changed destination to pre-Advising 1st sem route */
+                  <Link to="/pre-advising-1st-sem" key={index} className="block">
+                    <div className="flex border bg-[#D9D9D9]/50 border-black hover:bg-gray-200 cursor-pointer h-6 items-center px-2 text-sm transition-colors">
                       <div className="w-1/4">{student.name}</div>
                       <div className="w-1/6 text-center">{student.section}</div>
-                      <div className="w-1/3">{student.email}</div>
+                      <div className="w-1/3 text-xs">{student.email}</div>
                       <div className="w-1/4 text-center">{student.number}</div>
                     </div>
                   </Link>
                 ))
               ) : (
-                <div className="text-center py-4 text-gray-500">
-                  No student found
-                </div>
+                <div className="text-center py-2 text-gray-500 text-sm">No student found</div>
               )}
 
-              {/* EMPTY ROWS (VISUAL PLACEHOLDER LIKE YOUR DESIGN) */}
-              {[...Array(3)].map((_, i) => (
+              {/* Empty Rows - Matching the fixed h-6 height */}
+              {[...Array(5)].map((_, index) => (
                 <div
-                  key={i}
+                  key={`empty-${index}`}
                   className="flex border border-black h-6 items-center px-2 bg-[#D9D9D9]/50"
                 ></div>
               ))}
@@ -140,7 +118,6 @@ const StudentList = () => {
             </div>
           </div>
         </div>
-
       </main>
     </div>
   );
