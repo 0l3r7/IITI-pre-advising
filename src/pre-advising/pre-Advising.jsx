@@ -14,10 +14,10 @@ const PreAdvising = () => {
   ];
 
   return (
-    <div className="bg-gray-100 font-sans min-h-screen w-full md:pl-88 pl-[55%]">
+    <div className="bg-gray-100  h-full pl-[55%] md:pl-88 font-RB w-full">
 
       {/* HEADER */}
-      <div className="p-5 pt-14 flex justify-between border-b-4 border-[#D9D9D9] bg-white">
+      <div className="p-5 pt-14 flex justify-between border-b-4 border-[#D9D9D9] bg-gray-100">
         <h1 className="font-bold text-2xl p-5">Pre-Advising</h1>
 
         <Link to="/profile">
@@ -25,9 +25,9 @@ const PreAdvising = () => {
             <img
               src={adminLogo}
               alt="admin"
-              className="h-10 w-10 rounded-full"
+              className="h-10.5 w-10.5"
             />
-            <h1 className="text-xs text-center mt-1">Admin</h1>
+            <h1 className="text-xs text-center">Admin</h1>
           </div>
         </Link>
       </div>
@@ -54,7 +54,7 @@ const PreAdvising = () => {
                 <img
                   src={book}
                   alt="book"
-                  className="absolute bottom-4 right-4 w-10 h-10"
+                  className="absolute bottom-4 right-4 w-10 h-10 object-contain"
                 />
               </div>
             </Link>

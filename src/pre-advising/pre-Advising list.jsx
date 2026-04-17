@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import arrow from "../assets/photo/arrow.png";
-import next from "../assets/photo/next.png"; // Assuming you have this icon
+import next from "../assets/photo/next.png";
 import adminLogo from "../dashboard/dashboardLOGO/adminLogo.png";
 
-const StudentList = () => {
+const PreAdvisingList = () => {
   const [search, setSearch] = useState("");
 
   const students = [
@@ -29,7 +29,6 @@ const StudentList = () => {
     },
   ];
 
-  // FILTER SEARCH logic
   const filteredStudents = students.filter((student) =>
     student.name.toLowerCase().includes(search.toLowerCase()) ||
     student.email.toLowerCase().includes(search.toLowerCase()) ||
@@ -39,9 +38,8 @@ const StudentList = () => {
   return (
     <div className="bg-gray-100 h-full pl-[55%] md:pl-88 font-sans w-full min-h-screen">
       
-      {/* Header - Matching your reference design */}
+      {/* Header */}
       <div className="p-5 pt-14 flex justify-between border-b-5 border-[#D9D9D9] items-center">
-        
         <div className="flex flex-col items-start gap-1 text-[25px]">
           <Link to="/pre-advising">
             <img src={arrow} alt="Back" className="w-4 h-4" />
@@ -56,8 +54,7 @@ const StudentList = () => {
         </div>
 
         <div className="flex items-center gap-4">
-           {/* Search Bar remains for functionality */}
-           <div className="flex items-center bg-[#E5E5E5] rounded-full px-4 py-1.5 w-60">
+          <div className="flex items-center bg-[#E5E5E5] rounded-full px-4 py-1.5 w-60">
             <input
               type="text"
               placeholder="Search Student"
@@ -91,28 +88,32 @@ const StudentList = () => {
             <div className="px-4 flex flex-col space-y-1">
               
               {/* Dynamic Student Rows */}
-              {filteredStudents.length > 0 ? (
-                filteredStudents.map((student, index) => (
-                  /* Changed destination to pre-Advising 1st sem route */
-                  <Link to="/pre-advising-1st-sem" key={index} className="block">
-                    <div className="flex border bg-[#D9D9D9]/50 border-black hover:bg-gray-200 cursor-pointer h-6 items-center px-2 text-sm transition-colors">
-                      <div className="w-1/4">{student.name}</div>
-                      <div className="w-1/6 text-center">{student.section}</div>
-                      <div className="w-1/3 text-xs">{student.email}</div>
-                      <div className="w-1/4 text-center">{student.number}</div>
-                    </div>
-                  </Link>
-                ))
-              ) : (
-                <div className="text-center py-2 text-gray-500 text-sm">No student found</div>
-              )}
+{filteredStudents.length > 0 ? (
+  filteredStudents.map((student, index) => (
+    <Link 
+      key={index} 
+      to="/pre-advising-1st-sem" 
+      className="block no-underline"
+    >
+      <div className="flex border bg-[#D9D9D9]/50 border-black hover:bg-gray-200 cursor-pointer h-6 items-center px-2 text-sm transition-colors">
+        <div className="w-1/4">{student.name}</div>
+        <div className="w-1/6 text-center">{student.section}</div>
+        <div className="w-1/3 text-xs">{student.email}</div>
+        <div className="w-1/4 text-center">{student.number}</div>
+      </div>
+    </Link>
+  ))
+) : (
+  <div className="text-center py-2 text-gray-500 text-sm">
+    No student found
+  </div>
+)}
 
-              {/* Empty Rows - Matching the fixed h-6 height */}
+              {/* Empty Rows linked to the same destination */}
               {[...Array(5)].map((_, index) => (
-                <div
-                  key={`empty-${index}`}
-                  className="flex border border-black h-6 items-center px-2 bg-[#D9D9D9]/50"
-                ></div>
+                <Link to="/pre-advising-1st-sem" key={`empty-${index}`} className="block no-underline">
+                  <div className="flex border border-black h-6 items-center px-2 bg-[#D9D9D9]/50 hover:bg-gray-200 cursor-pointer"></div>
+                </Link>
               ))}
 
             </div>
@@ -123,4 +124,4 @@ const StudentList = () => {
   );
 };
 
-export default StudentList;
+export default PreAdvisingList;

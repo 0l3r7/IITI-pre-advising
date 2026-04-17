@@ -11,7 +11,6 @@ import List from "./yearLevel/list/list.jsx";
 import ViewGrade from "./yearLevel/viewGrade/viewGrade.jsx";
 
 import PreAdvising from "./pre-advising/pre-Advising.jsx";
-// Import the new file (React handles the space in the string)
 import PreAdvisingList from "./pre-advising/pre-Advising list.jsx";
 
 import Schedule from "./schedule/schedule.jsx";
@@ -20,6 +19,10 @@ import ViewSchedule from "./schedule/viewSchedule.jsx";
 import Settings from "./settings/settings.jsx";
 
 import Profile from "./settings/profile.jsx";
+
+import PreAdvisingFirstSem from "./pre-advising/pre-AdvisingFirstSem.jsx";
+import PreAdvisingSecondSem from "./pre-advising/pre-AdvisingSecondSem.jsx";
+
 
 // Lazy loaded dashboard
 const Dashboard = lazy(() => import("./dashboard/dashboard.jsx"));
@@ -64,13 +67,37 @@ function App() {
           }
         />
 
-        {/* ADDED: Pre-Advising List Route */}
+        {/* This path opens the List */}
         <Route
           path="/pre-advising-list"
           element={
             <>
               <Nav />
               <PreAdvisingList />
+            </>
+          }
+        />
+
+
+
+       {/* Pre Advising First Sem */}
+        <Route
+          path="/pre-advising-1st-sem"
+          element={
+            <>
+              <Nav />
+              <PreAdvisingFirstSem />
+            </>
+          }
+        />
+
+         {/* Pre Advising second Sem */}
+        <Route
+          path="/pre-advising-2nd-sem"
+          element={
+            <>
+              <Nav />
+              <PreAdvisingSecondSem />
             </>
           }
         />
@@ -129,8 +156,7 @@ function App() {
             </>
           }
         />
-
-        {/* view grade*/}
+       {/* View Grade */}
         <Route
           path="/viewGrade"
           element={
@@ -140,8 +166,7 @@ function App() {
             </>
           }
         />
-
-        {/* view section*/}
+       {/* View Section */}
         <Route
           path="/viewSection"
           element={
@@ -151,8 +176,7 @@ function App() {
             </>
           }
         />
-
-        {/* view schedule*/}
+       {/* View schedule */}
         <Route
           path="/viewSchedule"
           element={
@@ -162,6 +186,8 @@ function App() {
             </>
           }
         />
+
+
       </Routes>
     </BrowserRouter>
   );

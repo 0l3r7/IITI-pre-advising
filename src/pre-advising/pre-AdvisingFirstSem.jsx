@@ -1,7 +1,8 @@
 import React from "react";
-import arrow from "../../assets/photo/arrow.png";
-import next from "../../assets/photo/next.png";
-import adminLogo from "../../dashboard/dashboardLOGO/adminLogo.png";
+import { Link, useNavigate } from "react-router-dom"; // ✅ added useNavigate
+import arrow from "../assets/photo/arrow.png";
+import next from "../assets/photo/next.png";
+import adminLogo from "../dashboard/dashboardLOGO/adminLogo.png";
 
 const subjects = [
   {
@@ -53,6 +54,8 @@ const subjects = [
 ];
 
 const StudentGrades = () => {
+  const navigate = useNavigate(); // ✅ added
+
   return (
     <div className="bg-[#F5F5F5] font-sans min-h-screen w-full">
 
@@ -63,9 +66,11 @@ const StudentGrades = () => {
 
           {/* LEFT */}
           <div className="flex flex-col items-start gap-1 text-[20px]">
-            <a href="/section">
+
+            {/* ✅ FIXED */}
+            <Link to="/section">
               <img src={arrow} alt="Back" className="w-4 h-4 cursor-pointer active:scale-95" />
-            </a>
+            </Link>
 
             <div className="flex items-center gap-3">
               <span className="font-bold text-black/50">BSIT First Year Students</span>
@@ -75,12 +80,14 @@ const StudentGrades = () => {
           </div>
 
           {/* RIGHT */}
-          <a href="/profile">
+          {/* ✅ FIXED */}
+          <Link to="/profile">
             <div className="flex flex-col items-center cursor-pointer active:scale-95">
               <img src={adminLogo} className="h-10 w-10" />
               <h1 className="text-xs text-center">Admin</h1>
             </div>
-          </a>
+          </Link>
+
         </div>
 
         {/* MAIN */}
@@ -105,9 +112,19 @@ const StudentGrades = () => {
               <label className="bg-[#F5F5F5] px-1 text-[10px] text-gray-500">
                 Select Semester
               </label>
-              <select className="border border-gray-400 px-4 py-2 pr-8 bg-white text-sm outline-none">
-                <option>1st Semester 2023 - 2024</option>
-                <option>2nd Semester 2023 - 2024</option>
+
+              {/* ✅ FIXED SELECT */}
+              <select
+                defaultValue="1st"
+                onChange={(e) => {
+                  if (e.target.value === "2nd") {
+                    navigate("/pre-advising-2nd-sem");
+                  }
+                }}
+                className="border border-gray-400 px-4 py-2 pr-8 bg-white text-sm outline-none"
+              >
+                <option value="1st">1st Semester 2023 - 2024</option>
+                <option value="2nd">2nd Semester 2023 - 2024</option>
               </select>
             </div>
 
