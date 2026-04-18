@@ -7,7 +7,7 @@ const ViewSchedule = ({ show, onClose, yearSection }) => {
 
   const [showConfirm, setShowConfirm] = useState(false);
   const [selectedSemester, setSelectedSemester] = useState(
-    "2nd Semester 2025-2026",
+    "1st Semester 2025-2026",
   );
 
   const scheduleColumns = [

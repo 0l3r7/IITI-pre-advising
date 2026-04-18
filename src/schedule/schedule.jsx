@@ -32,19 +32,34 @@ const Schedule = () => {
 
       <main className="overflow-y-auto px-5 sm:px-14 py-6">
         <div className="space-y-5 px-7">
-          {options.map((item, index) => (
-            <div
-              key={index}
-              onClick={() => {
-                if (item === "Overall Schedule") {
-                  setShowOverall(true);
-                }
-              }}
-              className="bg-[#1C6100] text-white rounded-xl px-6 py-6 shadow-md cursor-pointer hover:bg-green-700 transition"
-            >
-              <h2 className="text-lg font-bold">{item}</h2>
-            </div>
-          ))}
+          {options.map((item, index) => {
+            if (item === "Overall Schedule") {
+              return (
+                <div
+                  key={index}
+                  onClick={() => setShowOverall(true)}
+                  className="bg-[#1C6100] text-white rounded-xl px-6 py-6 shadow-md cursor-pointer hover:bg-green-700 transition"
+                >
+                  <h2 className="text-lg font-bold">{item}</h2>
+                </div>
+              );
+            }
+
+            const yearNumber = item.match(/\d/)[0];
+
+            return (
+              <Link
+                key={index}
+                to="/viewSection"
+                state={{ year: yearNumber }}
+                className="block"
+              >
+                <div className="bg-[#1C6100] text-white rounded-xl px-6 py-6 shadow-md cursor-pointer hover:bg-green-700 transition">
+                  <h2 className="text-lg font-bold">{item}</h2>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </main>
       <ViewOverallSchedule
