@@ -2,27 +2,18 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import React from "react";
 import adminLogo from "../dashboard/dashboardLOGO/adminLogo.png";
-import ViewSchedule from "./viewSchedule";
-
-// Generate sections (1A–4J)
-const generateSections = () => {
-  const sections = [];
-  const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
-
-  for (let year = 1; year <= 4; year++) {
-    letters.forEach((letter) => {
-      sections.push(`BSIT ${year}${letter}`);
-    });
-  }
-
-  return sections;
-};
+import ViewOverallSchedule from "./viewOverallSchedule";
 
 const Schedule = () => {
-  const sections = generateSections();
-  const [showModal, setShowModal] = useState(false);
-  const [selectedSection, setSelectedSection] = useState("");
+  const [showOverall, setShowOverall] = useState(false);
 
+  const options = [
+    "Overall Schedule",
+    "BSIT 1st Year",
+    "BSIT 2nd Year",
+    "BSIT 3rd Year",
+    "BSIT 4th Year",
+  ];
   return (
     <div className="bg-gray-100 h-screen pl-[55%] md:pl-88 font-RB w-full flex flex-col">
       {/* HEADER */}
@@ -39,40 +30,41 @@ const Schedule = () => {
 
       {/* CONTENT */}
 
-      <main className="flex-1 overflow-y-auto px-5 sm:px-14 py-6">
-        <div>
-          {/* Top label */}
-          <div className="flex justify-end pr-5 mb-3 text-base">
-            <span>Schedule</span>
-          </div>
-
-          {/* Sections list */}
-          <div className="space-y-2">
-            {sections.map((section, index) => (
-              <div
-                key={index}
-                className="bg-gray-300 rounded-lg px-8 py-3 flex justify-between items-center"
-              >
-                <span className="text-base">{section}</span>
-
-                <button
-                  className="text-base hover:underline cursor-pointer"
-                  onClick={() => {
-                    setSelectedSection(section); // 👈 store clicked section
-                    setShowModal(true);
-                  }}
+      <main className="overflow-y-auto px-5 sm:px-14 py-6">
+        <div className="space-y-5 px-7">
+          {options.map((item, index) => {
+            if (item === "Overall Schedule") {
+              return (
+                <div
+                  key={index}
+                  onClick={() => setShowOverall(true)}
+                  className="bg-[#1C6100] text-white rounded-xl px-6 py-6 shadow-md cursor-pointer hover:bg-green-700 transition"
                 >
-                  View
-                </button>
-              </div>
-            ))}
-          </div>
+                  <h2 className="text-lg font-bold">{item}</h2>
+                </div>
+              );
+            }
+
+            const yearNumber = item.match(/\d/)[0];
+
+            return (
+              <Link
+                key={index}
+                to="/viewSection"
+                state={{ year: yearNumber }}
+                className="block"
+              >
+                <div className="bg-[#1C6100] text-white rounded-xl px-6 py-6 shadow-md cursor-pointer hover:bg-green-700 transition">
+                  <h2 className="text-lg font-bold">{item}</h2>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </main>
-      <ViewSchedule
-        show={showModal}
-        onClose={() => setShowModal(false)}
-        yearSection={selectedSection} // 👈 pass prop
+      <ViewOverallSchedule
+        show={showOverall}
+        onClose={() => setShowOverall(false)}
       />
     </div>
   );
