@@ -180,7 +180,7 @@ const ViewOverallSchedule = ({ show, onClose }) => {
             placeholder="Search School Year"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border mb-5 px-4 py-2 w-64 rounded-md text-sm"
+            className="border border-gray-300 mb-5 px-4 py-2 w-64 rounded-md text-sm"
           />
 
           {/* FILTERED YEARS */}
