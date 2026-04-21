@@ -11,10 +11,11 @@ const PreAdvising = () => {
     { title: "BSIT 2nd Year" },
     { title: "BSIT 3rd Year" },
     { title: "BSIT 4th Year" },
+    { title: "Irregular Students" },
   ];
 
   return (
-    <div className="bg-gray-100  h-full pl-[55%] md:pl-88 font-RB w-full">
+    <div className="bg-gray-100 h-full pl-[55%] md:pl-88 font-RB w-full">
 
       {/* HEADER */}
       <div className="p-5 pt-14 flex justify-between border-b-4 border-[#D9D9D9] bg-gray-100">
@@ -34,15 +35,12 @@ const PreAdvising = () => {
 
       {/* CONTENT */}
       <main className="px-5 sm:px-10 py-8">
-
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 max-w-255 mx-auto">
 
           {years.map((item, index) => (
-            /* Updated link to match the route in App.jsx */
             <Link to="/pre-advising-list" key={index}>
-              <div
-                className="bg-[#1C6100] w-full h-41.25 rounded-[15px] p-5 relative text-white shadow-lg hover:bg-green-800 transition-all duration-300 cursor-pointer"
-              >
+              <div className="bg-[#1C6100] w-full h-41.25 rounded-[15px] p-5 relative text-white shadow-lg hover:bg-green-800 transition-all duration-300 cursor-pointer">
+                
                 <h2 className="text-[25px] font-bold">
                   {item.title}
                 </h2>
